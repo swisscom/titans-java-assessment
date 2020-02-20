@@ -85,37 +85,6 @@ class ProvisioningMongoDockerSpecification extends BaseSpecification {
         lastServiceOperationResponse.state != OperationState.IN_PROGRESS
     }
 
-    void 'should successfully bind'() {
-        given:
-        def provisionRequest = CreateServiceInstanceBindingRequest
-                .builder()
-                .serviceInstanceId(serviceInstanceId.toString())
-                .serviceDefinitionId(this.SIMPLE_DB_PLAN["service_id"])
-                .planId(this.SIMPLE_DB_PLAN["plan_id"])
-                .build()
-
-        when:
-        def exchange = webTestClient.put()
-                .uri(String.format("/v2/service_instances/%s/service_bindings/%s", serviceInstanceId, serviceBindingId))
-                .bodyValue(provisionRequest)
-                .exchange()
-
-        then:
-        exchange.expectStatus().is2xxSuccessful()
-        exchange.expectBody(CreateServiceInstanceAppBindingResponse)
-    }
-
-    void 'should successfully unbind'() {
-        when:
-        def exchange = webTestClient.delete()
-                .uri(String.format("/v2/service_instances/%s/service_bindings/%s?service_id=%s&plan_id=%s", serviceInstanceId, serviceBindingId, this.SIMPLE_DB_PLAN["service_id"], this.SIMPLE_DB_PLAN["plan_id"]))
-                .exchange()
-
-        then:
-        exchange.expectStatus().is2xxSuccessful()
-        exchange.expectBody(DeleteServiceInstanceBindingResponse)
-    }
-
     void 'should successfully start deprovisioning a mongodb service'() {
 
         when:

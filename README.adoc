@@ -4,7 +4,7 @@
 
 Build a new https://spring.io/projects/spring-cloud-open-service-broker[Spring Cloud Service Broker] for provisioning new
 https://hub.docker.com/_/mongo[MongoDB Database] instances with Docker.
-The OSB (Open Service Broker) should be able run as a high available java application and be able to scale horizontal.
+The OSB (Open Service Broker) should be designed as an cloud native application.
 To achieve this there is a need to be able to schedule tasks to be run on different instances (a possibility would be
 https://spring.io/projects/spring-integration[Spring Integration] either with a memory queue or a real queuing engine like kafka or rabbitMQ).
 Following to the
@@ -24,14 +24,15 @@ MongoDB Docker Image
 * Implement Unit/Integration Tests (could use https://www.testcontainers.org/[testcontainers])
 * Implement a Scheduling Engine (could be https://spring.io/projects/spring-integration[Spring Integration] or anything which works)
 
-=== Stretch Goals
+=== Stretch Goal
 [square]
-* Implement https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#binding[binding] /
-https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#unbinding[unbinding] of MongoDB Docker
-* Implement https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#provisioning[provisioning] /
-https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#deprovisioning[deprovisioning] of
-https://hub.docker.com/_/mongo-express[MongoDB Docker Images with Admin UI]
 * Implement OSB reactive (maybe https://projectreactor.io/docs[projectreactor.io])
+
+
+=== Kick Off Meeting
+
+Please think about what you would have to research to complete this assessment. The research should be kept to a minimum,
+so if possible we will either provide the information or adapt the assessment accordingly.
 
 == Libraries
 
